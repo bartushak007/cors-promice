@@ -30,17 +30,31 @@ function httpGet(url) {
 }
 httpGet('https://tanuhaua.github.io/datas-file-json/github_users.json')
   .then( response => {    
-    JSON.parse(response).forEach(elem => {        
+    const objJsn = JSON.parse(response);
+    objJsn.forEach((elem, i) => {        
       httpGet(`https://api.github.com/users/${elem.githubName}`)
         .then(response => {
           const div = document.createElement('div');
-          div.classList.add('card');
-          div.style.backgroundImage = `url'${JSON.parse(response).avatar_url}'`;
+          div.classList.add('card');          
           document.body.appendChild(div);
-          // const x = new Image;      
-          // x.src = JSON.parse(response).avatar_url;
-          // document.body.appendChild(x);
+
+          const img = new Image;      
+          img.src = JSON.parse(response).avatar_url;
+          div.appendChild(img);
+
+          const title = document.createElement('div');
+          title.innerText = elem.fullName;
+          div.appendChild(title);
         })
     })
   })
   // .catch(res => console.error(res))
+
+  // const div = document.createElement('div');
+  //         div.classList.add('card');
+          
+  //         document.body.appendChild(div);
+  //         document.body.appendChild(div);
+  //         const x = new Image;      
+  //         x.src = 'https://cdn.xgqfrms.xyz/logo/logo.png';
+  //         div.appendChild(x);
