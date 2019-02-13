@@ -40,21 +40,36 @@ httpGet('https://tanuhaua.github.io/datas-file-json/github_users.json')
 
           const img = new Image;      
           img.src = JSON.parse(response).avatar_url;
+          img.classList.add('img');
           div.appendChild(img);
 
-          const title = document.createElement('div');
+          const title = document.createElement('h2');
           title.innerText = elem.fullName;
+          title.classList.add('title');
           div.appendChild(title);
         })
     })
   })
-  // .catch(res => console.error(res))
+  .catch(res => console.error(res))
 
   // const div = document.createElement('div');
   //         div.classList.add('card');
+  //         div.style.transform = `rotate(${random(-4, 4)}deg)`
           
   //         document.body.appendChild(div);
   //         document.body.appendChild(div);
-  //         const x = new Image;      
-  //         x.src = 'https://cdn.xgqfrms.xyz/logo/logo.png';
+  //         const x = new Image;
+  //         x.classList.add('img');      
+  //         x.src = 'https://scontent.fiev6-1.fna.fbcdn.net/v/t1.0-9/30710246_1895718487168587_3961380716582797312_n.jpg?_nc_cat=106&_nc_ht=scontent.fiev6-1.fna&oh=71103f800b8cec828e2616799cb64f67&oe=5CDE1C28';
   //         div.appendChild(x);
+  // const title = document.createElement('h2');
+  // title.classList.add('title');
+  //         title.innerText = "Roman Bartushak";
+  //         div.appendChild(title);
+
+
+
+          function random(min, max) {           
+    
+    return min + Math.random() * (max - min) ;
+          }
