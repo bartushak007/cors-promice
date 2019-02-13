@@ -30,13 +30,17 @@ function httpGet(url) {
 }
 httpGet('https://tanuhaua.github.io/datas-file-json/github_users.json')
   .then( response => {    
-      JSON.parse(response).forEach(elem => {        
-        httpGet(`https://api.github.com/users/${elem.githubName}`)
-          .then(response => {
-          const x = new Image;      
-          x.src = JSON.parse(response).avatar_url;
-          document.body.appendChild(x);
+    JSON.parse(response).forEach(elem => {        
+      httpGet(`https://api.github.com/users/${elem.githubName}`)
+        .then(response => {
+          const div = document.createElement('div');
+          div.classList.add('card');
+          div.style.backgroundImage = `url'${JSON.parse(response).avatar_url}'`;
+          document.body.appendChild(div);
+          // const x = new Image;      
+          // x.src = JSON.parse(response).avatar_url;
+          // document.body.appendChild(x);
         })
-      })
+    })
   })
   // .catch(res => console.error(res))
