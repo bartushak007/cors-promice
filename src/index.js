@@ -22,35 +22,29 @@ function httpGet(url) {
     request.onload = () => {
       if (request.status === 200) {        
         resolve(request.response);
-      } 
+      } else {
+        reject(new Error(`${request.status} : ${request.statusText}`));
+      }
     }
-    request.onerror = () => reject(new Error("Network Error"));
+    request.onerror = () => reject(new Error(`${request.status} : ${request.statusText}`));
     request.send()
   });
 }
+
+
+
+
 httpGet('https://tanuhaua.github.io/datas-file-json/github_users.json')
   .then( response => {    
     const objJsn = JSON.parse(response);
     objJsn.forEach((elem, i) => {        
       httpGet(`https://api.github.com/users/${elem.githubName}`)
         .then(response => {
-          const div = document.createElement('div');
-          div.classList.add('card');          
-          document.body.appendChild(div);
-
-          const img = new Image;      
-          img.src = JSON.parse(response).avatar_url;
-          img.classList.add('img');
-          div.appendChild(img);
-
-          const title = document.createElement('h2');
-          title.innerText = elem.fullName;
-          title.classList.add('title');
-          div.appendChild(title);
+          createHtml(elem, response);
         })
     })
   })
-  .catch(res => console.error(res))
+  
 
   // const div = document.createElement('div');
   //         div.classList.add('card');
@@ -59,17 +53,51 @@ httpGet('https://tanuhaua.github.io/datas-file-json/github_users.json')
   //         document.body.appendChild(div);
   //         document.body.appendChild(div);
   //         const x = new Image;
-  //         x.classList.add('img');      
+  //         x.classList.add('card__img');      
   //         x.src = 'https://scontent.fiev6-1.fna.fbcdn.net/v/t1.0-9/30710246_1895718487168587_3961380716582797312_n.jpg?_nc_cat=106&_nc_ht=scontent.fiev6-1.fna&oh=71103f800b8cec828e2616799cb64f67&oe=5CDE1C28';
   //         div.appendChild(x);
   // const title = document.createElement('h2');
-  // title.classList.add('title');
+  // title.classList.add('card__title');
   //         title.innerText = "Roman Bartushak";
   //         div.appendChild(title);
 
 
 
-          function random(min, max) {           
-    
-    return min + Math.random() * (max - min) ;
-          }
+function random(min, max) {
+  return min + Math.random() * (max - min) ;
+}
+
+function createHtml(elem, response) {
+  const div = document.createElement('div');
+  div.classList.add('card'); 
+  div.style.transform = `rotate(${random(-4, 4)}deg)`;         
+  document.body.appendChild(div);
+
+  const img = new Image;      
+  img.src = JSON.parse(response).avatar_url;
+  img.classList.add('card__img');
+  div.appendChild(img);
+
+  const title = document.createElement('h2');
+  title.innerText = elem.fullName;
+  title.classList.add('card__title');
+  div.appendChild(title);
+}
+
+
+// function httpGet(url) {
+//   return new Promise((resolve, reject) => {
+
+//     const request = new XMLHttpRequest();   
+//     request.open('GET', url, true);
+//     request.onload = () => {
+//       if (request.status === 200) {        
+//         resolve(request.response);
+//       } else {
+//         reject(new Error(`${request.status} : ${request.statusText}`));
+//       }
+//     }
+//     request.onerror = () => reject(new Error(`${request.status} : ${request.statusText}`));
+//     request.send()
+//   });
+// }

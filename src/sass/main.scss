@@ -1,28 +1,15 @@
 * {
- margin: 0; 
- padding: 0;
- box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  padding: 25px;
-  text-align: center;
-}
-
-.text {
-  font-family: 'Over the Rainbow', cursive;
-}
-
-.img {
-  width: 96%;
-    position: absolute;
-    top: 2%;
-    left: 2%;
-    right: 2%;
+  padding: 25px;  
 }
 
 .card {
-margin: 5px;
+  margin: 20px;
   display: inline-block;
   width: 250px;
   height: 250px;
@@ -30,17 +17,27 @@ margin: 5px;
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
-  box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);  
-}
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
+  background: #ffffff;
 
-.title {
-  font-family: 'Over the Rainbow', cursive;
-  position: absolute;
-  bottom: 0;
-  text-align: center; 
-  background: white;
-  right: 0;
-  left: 0;
-  top: 80%;
-  color: #5a44ff;
+  &__img {
+    width: 96%;
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    right: 2%;
+  }
+
+  &__title {
+    font-family: "Reenie Beanie", cursive;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    background: white;
+    right: 0;
+    left: 0;
+    top: 83%;
+    padding: 7px 0;
+    color: #5a44ff;
+  }
 }
