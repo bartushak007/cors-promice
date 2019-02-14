@@ -28,8 +28,7 @@ fetch('https://tanuhaua.github.io/datas-file-json/github_users.json')
         return user.json();
       }
     }) 
-    .then(userObj => { 
-      alert(userObj.avatar_url);     
+    .then(userObj => {      
       createHtml(elem.fullName, userObj.avatar_url);    
     });      
   });
@@ -42,8 +41,8 @@ httpGet('https://tanuhaua.github.io/datas-file-json/github_users.json')
 .then(arr => {
   arr.forEach((elem) => {        
     httpGet(`https://api.github.com/users/${elem.githubName}`)
-    .then(response => {
-      createHtml(elem.fullName, JSON.parse(response)).avatar_url;
+    .then(userObj => {      
+      createHtml(elem.fullName, JSON.parse(userObj).avatar_url);
     });
   });
 });
