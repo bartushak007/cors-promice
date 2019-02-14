@@ -1,2 +1,2 @@
 # cors-promice
-[link](https://bartushak007.github.io/cors-promice/dist/index.html)
+[link](https://bartushak007.github.io/cors-promise/dist/index.html)
