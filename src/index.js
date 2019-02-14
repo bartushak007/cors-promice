@@ -28,8 +28,9 @@ fetch('https://tanuhaua.github.io/datas-file-json/github_users.json')
         return user.json();
       }
     }) 
-    .then(response => {      
-      createHtml(elem.fullName, response.avatar_url);    
+    .then(userObj => { 
+      alert(userObj.avatar_url);     
+      createHtml(elem.fullName, userObj.avatar_url);    
     });      
   });
 }); 
