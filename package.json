@@ -27,7 +27,7 @@
     "gulp-sass": "^4.0.2"
   },
   "bugs": {
-    "url": "https://github.com/bartushak007/cors-promice/issues"
+    "url": "https://github.com/bartushak007/cors-promise/issues"
   },
-  "homepage": "https://github.com/bartushak007/cors-promice#readme"
+  "homepage": "https://github.com/bartushak007/cors-promise#readme"
 }
